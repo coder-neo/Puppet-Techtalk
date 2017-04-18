@@ -23,11 +23,8 @@ else
     sudo sed -i 's/.*\[main\].*/&\ndns_alt_names = puppet,puppet.example.com/' /etc/puppet/puppet.conf
 
     # Install some initial puppet modules on Puppet Master server
-   # sudo puppet module install puppetlabs-ntp
-   # sudo puppet module install garethr-docker
-   # sudo puppet module install puppetlabs-git
-   # sudo puppet module install puppetlabs-vcsrepo
-   # sudo puppet module install garystafford-fig
+   sudo puppet module install puppetlabs-vcsrepo
+   sudo puppet module install puppetlabs-tomcat
 
     # symlink manifest from Vagrant synced folder location
    # ln -s /vagrant/site.pp /etc/puppet/manifests/site.pp
