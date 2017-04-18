@@ -45,17 +45,18 @@ sudo puppet master --verbose --no-daemonize
 sudo service puppetmaster start
 sudo puppet cert list --all # check for 'puppet' cert
 ```
-
+### Certicate signing
 On each agent node execute following command to start Puppet’s Certificate Signing Request.
 
     sudo puppet agent --test --waitforcert=60
 
 Go to master node and execute following commands to sign certificate from agent nodes.
 
+```zsh
     sudo puppet cert list # should see 'agent1.example.com' cert waiting for signature
     sudo puppet cert sign --all # sign the agent node certs
     sudo puppet cert list --all # check for signed certs
-
+```
 
 Puppet programs are called manifests. Manifests are collection of puppet resources,where each resource describe some ascpect of system. Default manifest file is site.pp located at /etc/puppet/manifests/, puppet master compiles and apply these manisfest to agent node.
 
