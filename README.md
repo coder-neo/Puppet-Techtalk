@@ -2,9 +2,9 @@
 
 ## What is puppet?
 
-    Puppet is open source CM tool capable of automating system administration task. It is typically deployed in master-agent architecture where agents periodically poll master server for catalog(desired system state)and send backs report to master.
+Puppet is open source CM tool capable of automating system administration task. It is typically deployed in master-agent architecture where agents periodically poll master server for catalog(desired system state)and send backs report to master.
 
-    Puppet is based on ruby, it uses Puppet DSL for writing manifests.
+Puppet is based on ruby, it uses Puppet DSL for writing manifests.
 
 ## Installation
 
