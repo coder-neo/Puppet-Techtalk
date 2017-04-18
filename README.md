@@ -33,9 +33,8 @@ Update host config in /etc/hosts on both agent and master.
     192.168.33.51    agent2.example.com  agent2
 
 
-Above configuration steps are handled in bootstarp script executed while spawing VMs with vagrant.
-
-ssh to master node with vagrant ssh puppet.example.com and execute the following commands to generate CA certificate.
+Above configuration steps are handled in bootstrap script executed while spawing VMs with vagrant. Execute <b>'vagrant up'</b> command
+to spawn VMs. Connect to master node with <b>'vagrant ssh puppet.example.com'</b> and execute the following commands to generate CA certificate and puppet master certificate with appropriate DNS name.
 
 ```zsh
 sudo service puppetmaster status # test that puppet master was installed
@@ -53,16 +52,16 @@ On each agent node execute following command to start Puppet’s Certificate Sig
 Go to master node and execute following commands to sign certificate from agent nodes.
 
 ```zsh
-    sudo puppet cert list # should see 'agent1.example.com' cert waiting for signature
-    sudo puppet cert sign --all # sign the agent node certs
-    sudo puppet cert list --all # check for signed certs
+sudo puppet cert list # should see 'agent1.example.com' cert waiting for signature
+sudo puppet cert sign --all # sign the agent node certs
+sudo puppet cert list --all # check for signed certs
 ```
 
 Puppet programs are called manifests. Manifests are collection of puppet resources,where each resource describe some ascpect of system. Default manifest file is site.pp located at /etc/puppet/manifests/, puppet master compiles and apply these manisfest to agent node.
 
-Copy the site.pp file in repo to /etc/puppet/manifests/. Here in this manifest we have defined two different catalog for both the agents.
+Copy the <b>site.pp</b> file in repo to <b>/etc/puppet/manifests/</b>. Here in this manifest we have defined two different catalog for both the agents.
 
-Agent1 shows example of catalog used to deploy iTrust.
+Agent1 shows example of catalog used to deploy iTrust.<br/>
 Agent2 shows example of catalog used to install packages like git, nginx.
 
 Agents periodically polls master for catalog. To apply catalog manually execute :
